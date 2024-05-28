@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap');
+
+:root {
+  --cor-navbar: orange;
+  --cor-button: black;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin-top: 1rem;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+}
+#titulo-12{
+    color: black;
+    width: 350px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 1rem;
+    border-right: solid 2px;
+    border-bottom: solid 2px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+}
+header {
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 1rem;
+  background-color: var(--cor-navbar);
+  padding: 1em;
+}
+img{
+  border-radius: 4rem;
+}
+
+header a {
+  text-decoration: none;
+  color: brown;
+  font-size: 1rem;
+}
+
+header a:hover {
+  color: brown;
+}
+
+nav {
+  display: flex;
+  margin: auto;
+  width: 80%;
+  justify-content: space-between;
+}
+
+main {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 2em;
+  background-color: orangered;
+  border-radius: 10px;
+  padding: 30px;
+  padding-bottom: 80px;
+}
+.inicio {
+  border-radius: 10px;
+  width: 100%;
+  height: 50vh;
+  background-image: url(/imagens/playstation.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.texto-inicio {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.5rem;
+  padding: 0 50px;
+  color: white;
+}
+
+section h2 {
+  color: brown;
+  font-size: 1.6em;
+  margin-top: 50px;
+  background-color: #2f2f2f;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 100px;
+
+}
+
+.box {
+  max-width: 13rem;
+  color: white;
+}
+
+.box img {
+  width: 100%;
+  height: 80%;
+}
+
+.plataforma {
+  font-weight: 900;
+}
+
+.comprar button,
+.comprar input {
+  padding: 5px;
+  font-size: 1.3em;
+  color: white;
+  border: none;
+  background-color: var(--cor-button);
+  border-radius: 5px;
+}
+
+.comprar button:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: var(--cor-button);
+}
+
+.comprar button {
+  width: 100%;
+
+}
+
+#fade,
+#modal {
+  opacity: 1;
+  transition: .5s;
+}
+
+#fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.7);
+  z-index: 2;
+}
+
+#modal {
+  width: 80%;
+  border: black solid 5px;
+  background-color: white;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 3;
+}
+
+#modal.hide,
+#fade.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#tela-pedidos {
+  height: 50vh;
+}
+
+#tela-pedidos h2 {
+  display: inline-block;
+}
+
+#fechar-modal {
+  width: 2em;
+  cursor: pointer;
+}
+
+#pedidos {
+  margin-top: 10px;
+  font-size: 1.5em;
+  overflow: auto;
+  height: 80%;
+}
+
+
+
+#valor-total p {
+  font-size: 1.3em;
+  padding: 10px;
+}
+
+#btn-pagar button {
+  margin-top: 1em;
+  margin-left: 1em;
+  padding: 10px;
+  font-size: 1.3em;
+  background-color: var(--cor-button);
+  border-radius: 10px;
+  border: none;
+  color: white;
+  float: right;
+  cursor: pointer;
+}
+#pedidos {
+
+  font-size: 1em;
+  height: 75%;
+}
+
+footer{
+    padding: 50px 0;
+    margin-top: 5rem;
+    background-image: linear-gradient(to bottom, white, orange);
+    color: #fff;
+    text-align: center;
+}
+footer img{
+    height: 100px;
+    margin: 30px 0;
+}
+footer p{
+    margin-top: 25px;
+}
+footer form{
+    width: 400px;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+footer input, footer textarea{
+    border: none;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 100%;
+    display: block;
+}
+footer .detail{
+    font-weight: bold;
+}
+#pperfil{
+    color: black;
+}
+    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=d, initial-scale=1.0">
+  <title>Cafeteria</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body id="start">
+  <div id="fade" class="hide"></div>
+  <div id="modal" class="hide">
+    <div id="tela-pedidos">
+      <h2>PRODUTOS</h2>
+      <img src="images/close-icon.png" alt="" id="fechar-modal">
+      <br>
+      <hr>
+      <div id="pedidos"></div>
+      
+    </div>
+    <hr>
+    <div id="valor-total">
+      <p>Total :</p>
+    </div>
+    <hr>
+    <div id="btn-pagar">
+
+      <button id="btn-limpar">Limpar</button>
+      <button id="btn-pagar">Pagar</button>
+
+    </div>
+
+
+  </div>
+
+  <header>
+    <nav>
+      <a href="inicio.html">Pag Inicial</a>
+      
+      <a href="#" id="abrir-modal">Carrinho</a>
+    </nav>
+  </header>
+<main>
+    <h1 id="titulo-12">Nossos Produtos</h1>
+    <section class="alimento">
+      <div class="container">
+        <div class="box box-1">
+          <img src="https://tse1.mm.bing.net/th?id=OIP.E5sn0M03a39mNy42uSOapQHaEo&pid=Api&P=0&h=180" alt="Café">
+          <p>Café</p>
+          <p class="preco">R$ 3,50</p>
+          <div class="comprar">
+            <button class="add" id="cafe">Comprar</button>
+          </div>
+        </div>
+        <div class="box box-2">
+          <img src="https://media.gazetadopovo.com.br/2020/04/18195334/cafe-com-leite-72b5df30-660x372.jpg" alt="Café com leite">
+          <p>Café com leite</p>
+          <p class="preco">R$ 5,50</p>
+          <div class="comprar">
+            <button class="add" id="cafeCL">Comprar</button>
+          </div>
+        </div>
+        <div class="box box-3">
+          <img src="https://www.ffactor.com/wp-content/uploads/2018/08/AdobeStock_202756131.jpeg" alt="Cappuccino">
+          <p>Cappuccino</p>
+          <p class="preco">R$ 5,00</p>
+          <div class="comprar">
+            <button class="add" id="CA">Comprar</button>
+          </div>
+        </div>
+
+        <div class="box box-4">
+          <img src="https://reviewcafe.com.br/wp-content/uploads/2020/08/cafe-descafeinado-1536x1024.jpg" alt="Café descafeinado">
+          <p>Café descafeinado</p>
+          <p class="preco">R$ 5,50</p>
+          <div class="comprar">
+            <button class="add" id="CD">Comprar</button>
+          </div>
+        </div>
+
+        <div class="box box-5">
+          <img src="https://loja.supermerclick.com.br/image/cache/catalog/produtos-integracao/003855-omie___agua-mineral-cristal-sem-gas-500ml__conv-800x800.jpg" alt="Água">
+          <p>Água</p>
+          <p class="preco">R$ 2,50</p>
+          <div class="comprar">
+            <button class="add" id="A">Comprar</button>
+          </div>    
+        </div>
+
+        <div class="box box-6">
+          <img src="https://o.imgac.net/receita/sanduiche-com-queijo-e-peito-de-peru-33693.jpg" alt="Sanduíche peito de peru">
+          <p>Sanduíche peito de peru</p>
+          <p class="preco">R$ 10,99</p>
+          <div class="comprar">
+            <button class="add" id="SP">Comprar</button>
+          </div>
+        </div>
+
+        <div class="box box-7">
+          <img src="https://i.ytimg.com/vi/dEkSgsYgSr4/maxresdefault.jpg" alt="Pão de queijo">
+          <p>Pão de queijo</p>
+          <p class="preco">R$ 3,50</p>
+          <div class="comprar">
+            <button class="add" id="PDQ">Comprar</button>
+          </div>
+        </div>
+
+        <div class="box box-8">
+          <img src="https://cooknenjoy.com/wp-content/uploads/2016/11/bolo-de-maca-01.jpg" alt="Bolo de maçã e canela">
+          <p>Bolo de maçã e canela</p>
+          <p class="preco">R$ 6,50</p>
+          <div class="comprar">
+            <button class="add" id="BDMEC">Comprar</button>
+          </div>
+        </div>
+
+        <div class="box box-9">
+          <img src="https://tse4.mm.bing.net/th?id=OIP.TYsEKxtjYD1DJdg4LdBATAHaE8&pid=Api&P=0&h=180" alt="Croissant">
+          <p>Croissant</p>
+          <p class="preco">R$ 6,99</p>
+          <div class="comprar">
+            <button class="add" id="CRO">Comprar</button>
+          </div>
+        </div>
+
+        <div class="box box-10">
+          <img src="https://tse4.mm.bing.net/th?id=OIP.x7R6pgnkLSvZ4Vfyabm8oAHaFu&pid=Api&P=0&h=180" alt="Cookie">
+          <p>Cookie</p>
+          <p class="preco">R$ 3,50</p>
+          <div class="comprar">
+            <button class="add" id="COK">Comprar</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+  <footer>
+    <div id="footer123">
+<h2>Feedback</h2>
+<p>O que achou do atendimento?</p>
+<form action="" method="">
+    <input type="text" name="name" placeholder="Seu nome">
+    <input type="email" name="email" placeholder="Seu e-mail">
+    <textarea name="msg" placeholder="Sua opinião"></textarea>
+    <input type="submit" value="Enviar">
+</form>
+<p id="pperfil"> Coffe<span class="detail"> Culture</span></p>
+    </div>    
+</footer>
+</body>
+
+</html>
+<script>
+const abrirModal = document.querySelector("#abrir-modal");
+const fecharModal = document.querySelector("#fechar-modal");
+const modal = document.querySelector("#modal");
+const fade = document.querySelector("#fade");
+const eventos = [abrirModal, fade, fecharModal];
+const numeroSorteado = Math.floor(Math.random() * 1000) + 1;
+var cafe = document.getElementById("cafe");
+var cafeComLeite = document.getElementById("cafeCL");
+var cappuccino = document.getElementById("CA");
+var cafeDescafeinado = document.getElementById("CD");
+var agua = document.getElementById("A");
+var SanduicheDePeitoDePeru = document.getElementById("SP");
+var PaoDeQueijo = document.getElementById("PDQ");
+var BoloDeMacaECanela = document.getElementById("BDMEC");
+var Croissant = document.getElementById("CRO");
+var Cookie = document.getElementById("COK");;
+var add = document.getElementById("add");
+var carrinho = document.getElementById("pedidos");
+var limpar = document.getElementById("btn-limpar");
+var valorTotal = document.getElementById("valor-total");
+var pagar = document.getElementById("btn-pagar")
+var soma = 0;
+
+const toggleModal = () => {
+  modal.classList.toggle("hide");
+  fade.classList.toggle("hide");
+};
+eventos.map(el => {
+  el.addEventListener("click", () => toggleModal());
+});
+pagar.addEventListener("click", () => {
+  const numeroSorteado = (Math.floor(Math.random() * 1000) + 1 ) + ( "-- Este é seu número de identificação, vá até o caixa para efetuar o pagamento");
+   carrinho.innerHTML= numeroSorteado;
+   
+});
+limpar.addEventListener("click", () => {
+  carrinho.innerHTML = "";
+  valorTotal.innerHTML = "<p>Valor Total :</p>";
+  soma = 0;
+});
+var alimento = [
+  { nome: "Café", valor: 3.50 },
+  { nome: "Café com leite", valor: 5.50 },
+  { nome: "Cappuccino", valor: 5 },
+  { nome: "Café descafeinado", valor: 5.50 },
+  { nome: "Água", valor: 2.50 },
+  { nome: "Sanduíche de peite de peru", valor: 10.99 },
+  { nome: "Pão de queijo", valor: 3.50 },
+  { nome: "Bolo de maçã e canela", valor: 6.50 },
+  { nome: "Croissant", valor: 6.99 },
+  { nome: "Cookie", valor: 3.50 }
+];
+cafe.addEventListener("click", () => {
+  soma += alimento[0].valor;
+  carrinho.innerHTML += `<p>${alimento[0].nome} - R$ ${alimento[0].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+cafeComLeite.addEventListener("click", () => {
+  soma += alimento[1].valor;
+  carrinho.innerHTML += `<p>${alimento[1].nome} - R$ ${alimento[1].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+cappuccino.addEventListener("click", () => {
+  soma += alimento[2].valor;
+  carrinho.innerHTML += `<p>${alimento[2].nome} - R$ ${alimento[2].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+cafeDescafeinado.addEventListener("click", () => {
+  soma += alimento[3].valor;
+  carrinho.innerHTML += `<p>${alimento[3].nome} - R$ ${alimento[3].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+agua.addEventListener("click", () => {
+  soma += alimento[4].valor;
+  carrinho.innerHTML += `<p>${alimento[4].nome} - R$ ${alimento[4].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+SanduicheDePeitoDePeru.addEventListener("click", () => {
+  soma += alimento[5].valor;
+  carrinho.innerHTML += `<p>${alimento[5].nome} - R$ ${alimento[5].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+PaoDeQueijo.addEventListener("click", () => {
+  soma += alimento[6].valor;
+  carrinho.innerHTML += `<p>${alimento[6].nome} - R$ ${alimento[6].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+BoloDeMacaECanela.addEventListener("click", () => {
+  soma += alimento[7].valor;
+  carrinho.innerHTML += `<p>${alimento[7].nome} - R$ ${alimento[7].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+
+Croissant.addEventListener("click", () => {
+  soma += alimento[8].valor;
+  carrinho.innerHTML += `<p>${alimento[8].nome} - R$ ${alimento[8].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+Cookie.addEventListener("click", () => {
+  soma += alimento[9].valor;
+  carrinho.innerHTML += `<p>${alimento[9].nome} - R$ ${alimento[9].valor.toFixed(
+    2
+  )}</p>`;
+  valorTotal.innerHTML = `<p>Valor Total : ${soma.toFixed(2)}</p>`;
+});
+
+
+</script>
