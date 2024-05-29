@@ -215,6 +215,18 @@ section h2 {
   float: right;
   cursor: pointer;
 }
+#btn-limpar button {
+  margin-top: 1em;
+  margin-left: 1em;
+  padding: 10px;
+  font-size: 1.3em;
+  background-color: var(--cor-button);
+  border-radius: 10px;
+  border: none;
+  color: white;
+  float: right;
+  cursor: pointer;
+}
 #pedidos {
 
   font-size: 1em;
@@ -280,9 +292,11 @@ footer .detail{
       <p>Total :</p>
     </div>
     <hr>
-    <div id="btn-pagar">
+    <div id="btn-limpar">
 
       <button id="btn-limpar">Limpar</button>
+  </div>
+  <div id="btn-pagar"> 
       <button id="btn-pagar">Pagar</button>
 
     </div>
@@ -442,7 +456,7 @@ eventos.map(el => {
 });
 pagar.addEventListener("click", () => {
   const numeroSorteado = (Math.floor(Math.random() * 1000) + 1 ) + ( "-- Este é seu número de identificação, vá até o caixa para efetuar o pagamento");
-   carrinho.innerHTML= numeroSorteado;
+   carrinho.innerHTML = numeroSorteado;
    
 });
 limpar.addEventListener("click", () => {
